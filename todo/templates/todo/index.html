@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>todo</title>
-</head>
-<body>
-<h2>Task index view</h2>
-</body>
-</html>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+<script src="{% static '/js/main.js' %}"></script>
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="card px-3">
+                    <div class="card-body">
+                        <h4 class="card-title">Awesome Todo list</h4>
+                        <div class="add-items d-flex"> <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button> </div>
+                        <div class="list-wrapper">
+                            <ul class="d-flex flex-column-reverse todo-list">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
