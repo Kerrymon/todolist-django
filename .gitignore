@@ -4,8 +4,5 @@
 db.sqlite3
 
 todolist/__pycache__/*
-
-todo/__pycache__/*
-*.pyc
+todolist/__pycache__/settings.cpython-39.pyc
 todo/__pycache__/views.cpython-39.pyc
-*.pyc
