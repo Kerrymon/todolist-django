@@ -6,3 +6,6 @@ db.sqlite3
 todolist/__pycache__/*
 todolist/__pycache__/settings.cpython-39.pyc
 todo/__pycache__/views.cpython-39.pyc
+*.pyc
+todo/__pycache__/models.cpython-39.pyc
+todo/__pycache__/urls.cpython-39.pyc

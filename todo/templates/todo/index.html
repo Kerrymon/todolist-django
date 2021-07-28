@@ -8,12 +8,29 @@
                 <div class="card px-3">
                     <div class="card-body">
                         <h4 class="card-title">Awesome Todo list</h4>
-                        <div class="add-items d-flex"> <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button> </div>
-                        <div class="list-wrapper">
-                            <ul class="d-flex flex-column-reverse todo-list">
+                        <table>
+                        <form method="POST" action="/">
+                            {% csrf_token %}
+                            {{form.task_name}}
+                         <button class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
+                        </form>
 
-                            </ul>
+                        {% for task in tasks %}
+
+                         <tr>
+                        <div class="list-wrapper">
+
+                        {% if task.complete == True %}
+                            <th><strike>{{task}}</strike></th>
+                            {% else %}
+                            <th>{{task}}</th>
+                            {% endif %}
+                            <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
+			                <a class="btn btn-sm btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
                         </div>
+                         </tr>
+                        </table>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
