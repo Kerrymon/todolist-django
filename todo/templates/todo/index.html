@@ -1,39 +1,42 @@
 {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
-<script src="{% static '/js/main.js' %}"></script>
-<div class="page-content page-container" id="page-content">
-    <div class="padding">
-        <div class="row container d-flex justify-content-center">
-            <div class="col-md-12">
-                <div class="card px-3">
-                    <div class="card-body">
-                        <h4 class="card-title">Awesome Todo list</h4>
-                        <table>
-                        <form method="POST" action="/">
-                            {% csrf_token %}
-                            {{form.task_name}}
-                         <button class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
-                        </form>
+</head>
+<body>
+    <div class="form-group">
+      <h1>To-Do <small>List</small></h1>
+        <table>
+            <form method="POST" action="/">
+                {% csrf_token %}
+                {{form.task_name}}
+             <button class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
+            </form>
 
-                        {% for task in tasks %}
+            {% for task in tasks %}
 
-                         <tr>
-                        <div class="list-wrapper">
+             <tr>
+            <div class="list-wrapper">
+                <br>
 
-                        {% if task.complete == True %}
-                            <th><strike>{{task}}</strike></th>
-                            {% else %}
-                            <th>{{task}}</th>
-                            {% endif %}
-                            <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
-			                <a class="btn btn-sm btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
-                        </div>
-                         </tr>
-                        </table>
-                        {% endfor %}
-                    </div>
+            {% if task.complete == True %}
+                <th><strike>{{task}}</strike></th>
+                {% else %}
+                {{task}}
+                {% endif %}
+                <div class="buttons">
+                <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
+                <a class="btn btn-sm btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
                 </div>
             </div>
-        </div>
+             </tr>
+            </table>
+            {% endfor %}
+
     </div>
-</div>
+</body>
+</html>
